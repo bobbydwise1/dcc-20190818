@@ -11,9 +11,15 @@ You may also use a list or array to represent a set.
 */
 
 const powerSet = (yourArray) => {
-  let output =[[]]
+  let output =[[]];
+  let copy = yourArray.slice()
   for (i = 0; i<yourArray.length; i++) {
-    output.push(yourArray[i])
+    output.push([yourArray[i]])
+  }
+  for (i = 0; i<yourArray.length; i++) {
+    for (j = i+1; j<yourArray.length; j++) {
+      output.push([yourArray[i],yourArray[j]])
+    }
   }
   return output;
 }
