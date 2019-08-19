@@ -26,11 +26,16 @@ const powerSet = (yourArray) => {
       output.push([yourArray[i],yourArray[i+1],yourArray[j]])
     }
   }
+  for (i = 0; i<yourArray.length; i++) {
+    for (j = i+3; j<yourArray.length; j++) {
+      output.push([yourArray[i],yourArray[i+1],yourArray[i+2],yourArray[j]])
+    }
+  }
   return output;
 }
 
 
-let test1 = [1,2,3,4]
+let test1 = [1,2,3,4,5]
 console.log(powerSet(test1))
 
 
