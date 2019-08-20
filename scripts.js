@@ -10,25 +10,28 @@ For example, given the set {1, 2, 3}, it should return {{}, {1}, {2}, {3}, {1, 2
 You may also use a list or array to represent a set.
 */
 
+/*
+
+pattern:
+
+single elements, nothing of remainder
+two elements, 1 element of remainder
+
+*/
+
 const powerSet = (yourArray) => {
-  let output =[[],yourArray.slice()];
-  let copy = yourArray.slice()
-  for (i = 0; i<yourArray.length; i++) {
-    output.push([yourArray[i]])
-  }
-  for (i = 0; i<yourArray.length; i++) {
-    for (j = i+1; j<yourArray.length; j++) {
-      output.push([yourArray[i],yourArray[j]])
-    }
-  }
-  for (i = 0; i<yourArray.length; i++) {
-    for (j = i+2; j<yourArray.length; j++) {
-      output.push([yourArray[i],yourArray[i+1],yourArray[j]])
-    }
-  }
-  for (i = 0; i<yourArray.length; i++) {
-    for (j = i+3; j<yourArray.length; j++) {
-      output.push([yourArray[i],yourArray[i+1],yourArray[i+2],yourArray[j]])
+  let output =[[]];
+  let left;
+  let right;
+  let temp;
+  for (k = yourArray.length, i = 0; i<yourArray.length; k--, i++) {
+    //console.log('i/k = (', i, ', ',k, ' )')
+    left = yourArray.slice(0,i)
+    right = yourArray.slice(-k)
+    //console.log('left: ', left, ', right: ', right)
+    for (j = 0; j < right.length; j++) {
+      temp = left.concat([right[j]])
+      output.push(temp)
     }
   }
   return output;
