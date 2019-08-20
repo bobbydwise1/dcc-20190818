@@ -10,15 +10,6 @@ For example, given the set {1, 2, 3}, it should return {{}, {1}, {2}, {3}, {1, 2
 You may also use a list or array to represent a set.
 */
 
-/*
-
-pattern:
-
-single elements, nothing of remainder
-two elements, 1 element of remainder
-
-*/
-
 const powerSet = (yourArray) => {
   let output =[[]];
   let left;
@@ -38,16 +29,16 @@ const powerSet = (yourArray) => {
 }
 
 
-let test1 = [1,2,3,4,5]
-console.log(powerSet(test1))
-
-
-console.log()
+// let test1 = [1,2,3,4,5]
+// console.log(powerSet(test1))
 
 $(document).ready(function() {
   $('#form1').submit(function(event) {
   event.preventDefault();
   let input1 = $('#input1').val();
-  $('#output-section-1').text(input1);
+  input1 = input1.replace(/'/g,'"')
+  let input2 = JSON.parse(input1);
+  console.log(input2)
+  $('#output-section-1').text(JSON.stringify(powerSet(input2)));
   })
 });
